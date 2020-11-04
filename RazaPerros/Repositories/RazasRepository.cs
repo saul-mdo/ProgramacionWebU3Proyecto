@@ -23,6 +23,10 @@ namespace RazaPerros.Repositories
 				});
 		}
 
+		public IEnumerable<Paises> GetPaises()
+        {
+			return context.Paises.OrderBy(x=>x.Nombre);
+        }
 		public IEnumerable<RazaViewModel> GetRazasByLetraInicial(string letra)
 		{
 			return GetRazas().Where(x => x.Nombre.StartsWith(letra));

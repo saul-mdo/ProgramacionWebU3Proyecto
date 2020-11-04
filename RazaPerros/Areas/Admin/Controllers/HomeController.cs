@@ -21,7 +21,10 @@ namespace RazaPerros.Areas.Admin.Controllers
 
         public IActionResult Agregar()
         {
-            return View();
+            RazaAdminViewModel rvm = new RazaAdminViewModel();
+            RazasRepository repos = new RazasRepository();
+            rvm.Paises = repos.GetPaises();
+            return View(rvm);
         }
 
         public IActionResult Editar()
