@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using RazaPerros.Models;
 using RazaPerros.Models.ViewModels;
 using RazaPerros.Repositories;
 
@@ -41,7 +42,12 @@ namespace RazaPerros.Controllers
 
 		public IActionResult RazasPorPais()
 		{
-			return View();
+			sistem14_razasContext context = new sistem14_razasContext();
+			RazaPorPaisViewModel vm = new RazaPorPaisViewModel();
+			RazasRepository repos = new RazasRepository();
+			vm.Paises = repos.GetRazasByPais();
+
+			return View(vm);
 		}
 	}
 }

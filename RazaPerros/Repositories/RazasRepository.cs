@@ -23,6 +23,12 @@ namespace RazaPerros.Repositories
 				});
 		}
 
+		public IEnumerable<Paises> GetRazasByPais()
+		{
+			return context.Paises.Include(x => x.Razas).OrderBy(x => x.Nombre);
+		}
+
+
 		public IEnumerable<Paises> GetPaises()
         {
 			return context.Paises.OrderBy(x=>x.Nombre);
