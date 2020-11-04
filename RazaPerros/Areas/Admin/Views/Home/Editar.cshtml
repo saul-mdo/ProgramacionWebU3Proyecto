@@ -9,6 +9,7 @@
 <form enctype="multipart/form-data">
     <h3>Editar raza de perro</h3>
 
+    <input type="hidden" asp-for="Raza.Id" />
     <label>Nombre:</label>
     <input type="text" asp-for="Raza.Nombre" />
     <label>Descripcion:</label>
@@ -16,7 +17,7 @@
     <label>Otros nombres:</label>
     <input type="text" asp-for="Raza.OtrosNombres" />
     <label>Pais:</label>
-    <select asp-items="@(new SelectList(Model.Paises,"Id","Nombre"))">
+    <select asp-for="Raza.IdPais" asp-items="@(new SelectList(Model.Paises,"Id","Nombre"))">
         <option>Seleccione un país</option>
     </select><br />
     <label>Peso minimo:</label>
