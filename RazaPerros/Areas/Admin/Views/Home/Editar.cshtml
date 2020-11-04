@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+
+<form enctype="multipart/form-data">
+    <h3>Editar raza de perro</h3>
+
+    <input type="hidden" />
+    <label>Nombre:</label>
+    <input type="text" required="required" />
+    <label>Descripcion:</label>
+    <textarea cols="30" rows="5"></textarea>
+    <label>Otros nombres:</label>
+    <input type="text" />
+    <label>Pais:</label>
+    <select>
+        <option>Seleccione un país</option>
+    </select>
+    <label>Peso minimo:</label>
+    <input type="number" />
+    <label>Peso maximo:</label>
+    <input type="number" />
+    <label>Altura minima:</label>
+    <input type="number" />
+    <label>Altura Maxima:</label>
+    <input type="number" />
+    <label>Esperanza de vida:</label>
+    <input type="number" />
+
+    <h4>Estadisticas</h4>
+    <label>Nivel de energía:</label>
+    <input type="number" max="10" min="0" />
+    <label>Facilidad de entrenamiento:</label>
+    <input type="number" max="10" min="0" />
+    <label>Ejercicio obligatorio:</label>
+    <input type="number" max="10" min="0" />
+    <label>Amistad con desconocidos:</label>
+    <input type="number" max="10" min="0" />
+    <label>Amistad con perros:</label>
+    <input type="number" max="10" min="0" />
+    <label>Necesidad de cepillado:</label>
+    <input type="number" max="10" min="0" />
+
+    <h4>Caracteristicas Fisicas</h4>
+    <label>Patas:</label>
+    <input type="text" />
+    <label>Cola:</label>
+    <input type="text" />
+    <label>Hocico:</label>
+    <input type="text" />
+    <label>Pelo:</label>
+    <input type="text" />
+    <label>Color:</label>
+    <input type="text" />
+
+    <label>Imagen:</label>
+    <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" />
+    <img id="imagePreview" src="~/imgs_perros/0_0.jpg" alt="Vista previa de la imagen" />
+
+    <label id="error">
+        @Html.ValidationSummary()
+    </label>
+
+    <div class="botones">
+        <input class="btnSumbit" type="submit" value="Guardar" />
+        <a href="~/Admin/Home">
+            <input type="button" value="Cancelar" />
+        </a>
+
+    </div>
+
+</form>
+
+<script>
+    function mostrarImagen(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("imagePreview").src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>
+
